@@ -33,22 +33,37 @@ public class LinkedList<Items extends Comparable<Items>> implements Iterable<Ite
     public Items tail() {
         return this.tail != null ? tail.item : null;
     }
-
+    private void addToEmpetyList(Node<Items> node) {
+        head = node;
+        tail = head;
+    }
     public void add(Items item){
         Node<Items> new_node = new Node<Items>(item);
 
         if(size == 0) {
-            head = new_node;
-            tail = head;
+            addToEmpetyList(new_node);
         } else {
             tail.next = new_node;
             new_node.previous = tail;
             tail = tail.next;
         }
-
+        
+        new_node = null;
         size++;
     }
 
+    public void addHead(Items item) {
+        Node<Items> new_node = new Node<Items>(item);
+        if(size == 0) {
+            addToEmpetyList(new_node);
+        } else {
+            new_node.next = head;
+            head.previous = new_node;
+            head = new_node;
+        }
+        new_node = null;
+        size++;
+    }
     public Iterator<Items> iterator() {
         // TODO Auto-generated method stub
         return new LinkedListIterator();

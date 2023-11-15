@@ -20,9 +20,10 @@ public class Client {
             //     System.out.println(list.removeHead() + " removed head");
             // } else if(command.compareTo("-") == 0) {
             //     System.out.println(list.remove(scn.nextInt()) + " removed");
-            // }else if(command.compareTo("+H") == 0) {
-            //     list.addHead(scn.nextInt());
             // }
+            else if(command.compareTo("+H") == 0) {
+                list.addHead(scn.nextInt());
+            }
         }
 
         for(Integer x : list) {
