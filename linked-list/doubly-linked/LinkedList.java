@@ -64,6 +64,36 @@ public class LinkedList<Items extends Comparable<Items>> implements Iterable<Ite
         new_node = null;
         size++;
     }
+
+    public Items removeHead() {
+        if(size == 0) {
+            throw new IllegalAccessError("Empty List");
+        }
+        Items item = head.item;
+        head = head.next;
+        size--;
+        if(size != 0) {
+            head.previous = null;
+        } else {
+            tail = null;
+        }
+        return item;
+    }
+
+    public Items removeTail() {
+        if(size == 0) {
+            throw new IllegalAccessError("Empty List");
+        }
+        Items item = tail.item;
+        tail = tail.previous;
+        size--;
+        if(size != 0) {
+            tail.next = null;
+        } else {
+            head = null;
+        }
+        return item;
+    }
     public Iterator<Items> iterator() {
         // TODO Auto-generated method stub
         return new LinkedListIterator();
