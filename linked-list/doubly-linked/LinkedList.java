@@ -94,6 +94,38 @@ public class LinkedList<Items extends Comparable<Items>> implements Iterable<Ite
         }
         return item;
     }
+
+    public Items remove(Items item) {
+        Node<Items> p1 = head;
+        Node<Items> p2 = head;
+        Items removed_item = null;
+        while(p1 != null) {
+            if(p1.item.compareTo(item) == 0) {
+                if(p1 == head) {
+                    head = p1.next;
+                }
+                removed_item = p1.item;
+                p2.next = p1.next;
+                if(p1.next != null) {
+                    p1.next.previous = p2;
+                }
+                p1 = null;
+                size--;
+                if(size == 0) {
+                    head = null;
+                    tail = null;
+                }
+                break;
+            } else {
+                p2 = p1;
+                p1 = p1.next;
+            }
+        }
+
+        return removed_item;
+    }
+
+
     public Iterator<Items> iterator() {
         // TODO Auto-generated method stub
         return new LinkedListIterator();
