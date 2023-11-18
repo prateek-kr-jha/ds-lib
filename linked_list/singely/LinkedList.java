@@ -96,6 +96,16 @@ public class LinkedList<Item extends Comparable<Item>> implements Iterable<Item>
         size--;
         return item;
     }
+    
+    public void printAll() {
+    	Node<Item> iterator = head;
+    	
+    	while(iterator != null) {
+    		System.out.print(iterator.item + " ");
+    	}
+    	
+    	System.out.println();
+    }
 
     public Iterator<Item> iterator() {
         // TODO Auto-generated method stub
