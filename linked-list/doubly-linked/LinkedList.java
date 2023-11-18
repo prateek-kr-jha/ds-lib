@@ -1,5 +1,5 @@
 import java.util.Iterator;
-
+//linear search
 public class LinkedList<Items extends Comparable<Items>> implements Iterable<Items> {
     public class Node<Items extends Comparable<Items>> {
         public Items item;

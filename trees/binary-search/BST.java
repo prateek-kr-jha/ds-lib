@@ -67,6 +67,34 @@ public class BST<Item extends Comparable<Item>> {
         addRecursive(item, root);
     }
 
+    public void postOrder() {
+        postOrder(root);
+    }
+
+    private void postOrder(TreeNode<Item> node) {
+        if(node == null) {
+            return;
+        }
+
+        postOrder(node.left);
+        postOrder(node.right);
+        System.out.print(node.item + " ");
+    }
+
+    public void preOrder() {
+        preOrder(root);
+    }
+
+    private void preOrder(TreeNode<Item> node) {
+        if(node == null) {
+            return;
+        }
+
+        System.out.print(node.item + " ");
+        preOrder(node.left);
+        preOrder(node.right);
+    }
+
     private void addRecursive(Item item, TreeNode<Item> node) {
         int comp = node.item.compareTo(item);
         if(comp > 0) {
@@ -122,6 +150,10 @@ public class BST<Item extends Comparable<Item>> {
         bst.inOrder();
         System.out.println();
         System.out.println(bst.min());
+        bst.postOrder();
+        System.out.println();
+        bst.preOrder();
+        System.out.println();
 
     }
 
