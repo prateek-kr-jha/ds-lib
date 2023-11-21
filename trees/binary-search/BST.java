@@ -1,3 +1,6 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class BST<Item extends Comparable<Item>> {
     private TreeNode<Item> root;
     private int size;
@@ -94,6 +97,27 @@ public class BST<Item extends Comparable<Item>> {
         preOrder(node.left);
         preOrder(node.right);
     }
+    
+    public void levelOrder() {
+    	Queue<TreeNode> queue = new LinkedList<TreeNode>();
+
+        queue.add(root);
+
+        while(queue.size() != 0) {
+            TreeNode<Item> current_node = queue.poll();
+            System.out.print(current_node.item + " ");
+
+            if(current_node.left != null) {
+                queue.add(current_node.left);
+            }
+
+            if(current_node.right != null) {
+                queue.add(current_node.right);
+            }
+        }
+
+        System.out.println();
+    }
 
     private void addRecursive(Item item, TreeNode<Item> node) {
         int comp = node.item.compareTo(item);
@@ -154,6 +178,7 @@ public class BST<Item extends Comparable<Item>> {
         System.out.println();
         bst.preOrder();
         System.out.println();
+        bst.levelOrder();
 
     }
 
