@@ -116,7 +116,7 @@ public class BST<Item extends Comparable<Item>> {
             }
         }
 
-        System.out.println();
+        System.out.println("level order");
     }
 
     private void addRecursive(Item item, TreeNode<Item> node) {
@@ -143,21 +143,43 @@ public class BST<Item extends Comparable<Item>> {
     }
 
     public Item min() {
-        return min(root, root.item);
+        return min(root);
     }
 
-    private Item min(TreeNode<Item> node, Item item) {
-        if(node == null) {
-            return item;
+    private Item min(TreeNode<Item> node) {
+        if(node.left == null) {
+            return node.item;
         }
-
-        if(node.item.compareTo(item) < 0) {
-            item = node.item;
-        }
-        item = min(node.left, item);
         
-        return item;
+        return min(node.left);
     }
+
+    public Item max() {
+        return max(root);
+    }
+
+    private Item max(TreeNode<Item> node) {
+        if(node.right == null) {
+            return node.item;
+        }
+        
+        return max(node.right);
+    }
+
+    public Item maxNR() {
+        TreeNode<Item> current_node = root;
+        Item max = root.item;
+        while(current_node != null) {
+            if(current_node.right != null) {
+                current_node = current_node.right;
+            } else {
+                max = current_node.item;
+                break;
+            }
+        }
+        return max;
+    }
+
     public static void main(String[] args) {
         BST<Integer> bst = new BST<Integer>();
         bst.add(50);
@@ -172,13 +194,15 @@ public class BST<Item extends Comparable<Item>> {
         System.out.println(bst.root());
         System.out.println(bst.size());
         bst.inOrder();
-        System.out.println();
-        System.out.println(bst.min());
+        System.out.println("in order");
+        System.out.println(bst.min() + " min");
         bst.postOrder();
-        System.out.println();
+        System.out.println("Post order");
         bst.preOrder();
-        System.out.println();
+        System.out.println("pre order");
         bst.levelOrder();
+        System.out.println(bst.max() + " max");
+        System.out.println(bst.maxNR() + " max");
 
     }
 
