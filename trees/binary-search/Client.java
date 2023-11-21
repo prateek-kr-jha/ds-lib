@@ -12,9 +12,9 @@ public class Client {
             } else if(x.compareTo("+RC") == 0){
                 bst.addRecursive(scn.nextInt());
             } else if(x.compareTo("R") == 0){
-                System.out.println(bst.root());
+                System.out.println(bst.root() + " root");
             } else if(x.compareTo("=") == 0){
-                System.out.println(bst.size());
+                System.out.println(bst.size() + " size");
             } else if(x.compareTo("IO") == 0){
                 bst.inOrder();
                 System.out.println("in order");
@@ -32,10 +32,18 @@ public class Client {
                 System.out.println(bst.max() + " max");
             } else if(x.compareTo("MAXNR") == 0){
                 System.out.println(bst.maxNR() + " max nr");
-            } 
+            } else if(x.compareTo("=R") == 0){
+                System.out.println(bst.sizeR() + " size recursive");
+            } else if(x.compareTo("LOR") == 0){
+                bst.levelOrderR();
+            }
             // else if(x.compareTo("") == 0){
                 
-            // } else if(x.compareTo("") == 0){
+            // }
+            // else if(x.compareTo("") == 0){
+                
+            // }
+            // else if(x.compareTo("") == 0){
                 
             // }
         }

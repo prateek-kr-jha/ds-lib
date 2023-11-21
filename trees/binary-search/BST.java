@@ -1,5 +1,6 @@
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 public class BST<Item extends Comparable<Item>> {
     private TreeNode<Item> root;
@@ -178,5 +179,41 @@ public class BST<Item extends Comparable<Item>> {
             }
         }
         return max;
+    }
+
+    public int sizeR() {
+        return sizeR(root);
+    }  
+
+    private int sizeR(TreeNode<Item> node) {
+        if(node == null) {
+            return 0;
+        }
+
+        return sizeR(node.left) + sizeR(node.right) + 1;
+    }
+
+    public void levelOrderR() {
+        Queue<TreeNode<Item>> queue = new LinkedList<TreeNode<Item>>();
+        Stack<TreeNode<Item>> stack = new Stack<TreeNode<Item>>();
+        queue.add(root);
+
+        while(queue.size() != 0) {
+            TreeNode<Item> current_node = queue.poll();
+
+            if(current_node.left != null) {
+                queue.add(current_node.left);
+            }
+
+            if(current_node.right != null) {
+                queue.add(current_node.right);
+            }
+            stack.push(current_node);
+        }
+
+        while(!stack.isEmpty()) {
+            System.out.print((stack.pop().item) + " ");
+        }
+        System.out.println("level order reversed");
     }
 }
