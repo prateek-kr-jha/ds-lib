@@ -99,7 +99,7 @@ public class BST<Item extends Comparable<Item>> {
     }
     
     public void levelOrder() {
-    	Queue<TreeNode> queue = new LinkedList<TreeNode>();
+    	Queue<TreeNode<Item>> queue = new LinkedList<TreeNode<Item>>();
 
         queue.add(root);
 
@@ -179,31 +179,4 @@ public class BST<Item extends Comparable<Item>> {
         }
         return max;
     }
-
-    public static void main(String[] args) {
-        BST<Integer> bst = new BST<Integer>();
-        bst.add(50);
-        bst.add(25);
-        bst.add(12);
-        bst.add(37);
-        bst.add(75);
-        bst.addRecursive(34);
-        bst.addRecursive(84);
-        bst.addRecursive(8);
-        bst.addRecursive(10);
-        System.out.println(bst.root());
-        System.out.println(bst.size());
-        bst.inOrder();
-        System.out.println("in order");
-        System.out.println(bst.min() + " min");
-        bst.postOrder();
-        System.out.println("Post order");
-        bst.preOrder();
-        System.out.println("pre order");
-        bst.levelOrder();
-        System.out.println(bst.max() + " max");
-        System.out.println(bst.maxNR() + " max");
-
-    }
-
 }
