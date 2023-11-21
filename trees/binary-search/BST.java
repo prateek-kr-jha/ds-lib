@@ -216,4 +216,20 @@ public class BST<Item extends Comparable<Item>> {
         }
         System.out.println("level order reversed");
     }
+
+    public int height() {
+        return height(root);
+    }
+
+    private int height(TreeNode<Item> node) {
+        if(node == null) {
+            return -1;
+        }
+        int height_left = height(node.left);
+        int height_right = height(node.right);
+        if(height_left > height_right) {
+            return height_left + 1;
+        } 
+        return height_right + 1;
+    }
 }

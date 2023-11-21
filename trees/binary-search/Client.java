@@ -36,10 +36,9 @@ public class Client {
                 System.out.println(bst.sizeR() + " size recursive");
             } else if(x.compareTo("LOR") == 0){
                 bst.levelOrderR();
+            } else if(x.compareTo("H") == 0){
+                System.out.println(bst.height() + " height");
             }
-            // else if(x.compareTo("") == 0){
-                
-            // }
             // else if(x.compareTo("") == 0){
                 
             // }
