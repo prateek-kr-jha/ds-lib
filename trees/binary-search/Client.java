@@ -38,10 +38,13 @@ public class Client {
                 bst.levelOrderR();
             } else if(x.compareTo("H") == 0){
                 System.out.println(bst.height() + " height");
+            } else if(x.compareTo("S") == 0){
+                int to_search = scn.nextInt();
+                System.out.println("found " + to_search + " " + bst.search(to_search));
+            } else if(x.compareTo("SNR") == 0){
+                int to_search = scn.nextInt();
+                System.out.println("found " + to_search + " " + bst.searchNR(to_search));
             }
-            // else if(x.compareTo("") == 0){
-                
-            // }
             // else if(x.compareTo("") == 0){
                 
             // }

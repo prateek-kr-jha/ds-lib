@@ -232,4 +232,42 @@ public class BST<Item extends Comparable<Item>> {
         } 
         return height_right + 1;
     }
+
+    public boolean search(Item item) {
+        return search(item, root);
+    }
+
+    private boolean search(Item item, TreeNode<Item> node) {
+        boolean found = false;
+        if(node == null) {
+            return found;
+        }
+        int compare = node.item.compareTo(item);
+        if(compare == 0) {
+            return true;
+        } else if(compare == -1) {
+            return found || search(item, node.right);
+        } else {
+            return found || search(item, node.left);
+        }
+    }
+
+    public boolean searchNR(Item item) {
+        TreeNode<Item> node = root;
+        boolean found = false;
+        while(node != null) {
+            int cmp = node.item.compareTo(item);
+            if(cmp == 0) {
+                found = true;
+                node = null;
+                break;
+            } else if(cmp == -1) {
+                node = node.right;
+            } else {
+                node = node.left;
+            }
+        }
+
+        return found;
+    }
 }
