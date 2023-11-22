@@ -44,7 +44,12 @@ public class Client {
             } else if(x.compareTo("SNR") == 0){
                 int to_search = scn.nextInt();
                 System.out.println("found " + to_search + " " + bst.searchNR(to_search));
+            } else if(x.compareTo("DT") == 0){
+                bst.deleteTree();
             }
+            // else if(x.compareTo("") == 0){
+                
+            // }
             // else if(x.compareTo("") == 0){
                 
             // }

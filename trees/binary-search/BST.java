@@ -270,4 +270,23 @@ public class BST<Item extends Comparable<Item>> {
 
         return found;
     }
+
+    // public void deleteTree() {
+    //     deleteTree(root);
+    // }
+
+    // private void deleteTree(TreeNode<Item> node) {
+    //     if(node == null) {
+    //         return;
+    //     }
+
+    //     deleteTree(node.left);
+    //     deleteTree(node.right);
+    //     node = null;
+    //     size--;
+    // }
+
+    public void deleteTree() {
+        root = null;
+    }
 }
