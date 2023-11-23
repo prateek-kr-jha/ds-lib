@@ -289,4 +289,24 @@ public class BST<Item extends Comparable<Item>> {
     public void deleteTree() {
         root = null;
     }
+
+    public Item deepestNode() {
+        Queue<TreeNode<Item>> queue = new LinkedList<TreeNode<Item>>();
+        queue.add(root);
+        TreeNode<Item> tmp = null;
+        while(queue.size() != 0) {
+            tmp = queue.poll();
+
+            if(tmp.right != null) {
+                queue.add(tmp.right);
+            }
+
+            if(tmp.left != null) {
+                queue.add(tmp.left);
+            }
+            
+        }
+
+        return tmp.item;
+    }
 }
