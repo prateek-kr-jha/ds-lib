@@ -327,5 +327,21 @@ public class BST<Item extends Comparable<Item>> {
 
 
     public int rank(Item item) {
+        return rank(item, root);
+    }
+
+    private int rank(Item item, TreeNode<Item> node) {
+        if(node == null) {
+            return 0;
+        }
+        int cmp = node.item.compareTo(item);
+        
+        if(cmp == 0) {
+            return sizeR(node.left);
+        } else if(cmp < 0) {
+            return sizeR(node.left) + 1 + rank(item, node.right);
+        } else {
+            return rank(item, node.left);
+        }
     }
 }

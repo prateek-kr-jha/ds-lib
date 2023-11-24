@@ -50,7 +50,7 @@ public class Client {
             else if(x.compareTo("DL") == 0){
                 System.out.println(bst.deepestNode() + " deepest node");
             } else if(x.compareTo("RA") == 0){
-                System.out.println(bst.rank(scn.nextInt()));
+                System.out.println(bst.rank(scn.nextInt()) + " rank");
             }
             // else if(x.compareTo("") == 0){
                 
