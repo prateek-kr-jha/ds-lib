@@ -2,6 +2,8 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
+import org.w3c.dom.traversal.TreeWalker;
+
 public class BST<Item extends Comparable<Item>> {
     private TreeNode<Item> root;
     private int size;
@@ -304,9 +306,26 @@ public class BST<Item extends Comparable<Item>> {
             if(tmp.left != null) {
                 queue.add(tmp.left);
             }
-            
         }
 
         return tmp.item;
+    }
+
+    private TreeNode<Item> searchNode(Item item, TreeNode<Item> node) {
+        if(node == null) {
+            return null;
+        }
+        int compare = node.item.compareTo(item);
+        if(compare == 0) {
+            return node;
+        } else if(compare == -1) {
+            return searchNode(item, node.right);
+        } else {
+            return searchNode(item, node.left);
+        }
+    }
+
+
+    public int rank(Item item) {
     }
 }
