@@ -55,10 +55,9 @@ public class Client {
                 bst.deleteMin();
             } else if(x.compareTo("-MAX") == 0){
                 bst.deleteMax();
+            } else if(x.compareTo("-") == 0){
+                bst.delete(scn.nextInt());
             }
-            // else if(x.compareTo("") == 0){
-                
-            // }
             // else if(x.compareTo("") == 0){
                 
             // }

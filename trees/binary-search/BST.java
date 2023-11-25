@@ -146,12 +146,13 @@ public class BST<Item extends Comparable<Item>> {
     }
 
     public Item min() {
-        return min(root);
+        TreeNode<Item> node = min(root);
+        return node == null ? null : node.item;
     }
 
-    private Item min(TreeNode<Item> node) {
+    private TreeNode<Item> min(TreeNode<Item> node) {
         if(node.left == null) {
-            return node.item;
+            return node;
         }
         
         return min(node.left);
@@ -351,11 +352,12 @@ public class BST<Item extends Comparable<Item>> {
             return;
         }
         root = deleteMin(root);
+        size = sizeR(root);
     }
 
     private TreeNode<Item> deleteMin(TreeNode<Item> node) {
         if(node.left == null) {
-            size--;
+            // size--;
             return node.right;
         }
         node.left = deleteMin(node.left);
@@ -368,14 +370,47 @@ public class BST<Item extends Comparable<Item>> {
             return;
         }
         root = deleteMax(root);
+        size = sizeR(root);
     }
 
     private TreeNode<Item> deleteMax(TreeNode<Item> node) {
         if(node.right == null) {
-            size--;
+            // size--;
             return node.left;
         }
         node.right = deleteMax(node.right);
+        return node;
+    }
+
+    public void delete(Item item) {
+        root = delete(item, root);
+        size = sizeR(root);
+    }
+
+    private TreeNode<Item> delete(Item item, TreeNode<Item> node) {
+        if(node == null) {
+            return null;
+        }
+
+        int cmp = node.item.compareTo(item);
+
+        if(cmp < 0) {
+            return delete(item, node.right);
+        } else if(cmp > 0) {
+            return delete(item, node.right);
+        } else {
+            if(node.right == null) {
+                return node.left;
+            }
+            if(node.left == null) {
+                return node.right;
+            }
+
+            TreeNode<Item> temp = node;
+            node = min(temp.right);
+            node.right = deleteMin(temp.right);
+            node.left = temp.left;
+        }
         return node;
     }
     
