@@ -430,5 +430,52 @@ public class BST<Item extends Comparable<Item>> {
         return left_leaves + right_leaves;
 
     }
+
+    public int leavesNR() {
+        if(root == null) {
+            return 0;
+        }
+
+        Queue<TreeNode<Item>> queue = new LinkedList<TreeNode<Item>>();
+        queue.add(root);
+        int leaves = 0;
+        while(!queue.isEmpty()) {
+            TreeNode<Item> temp_node = queue.poll();
+            if(temp_node.left == null && temp_node.right == null) {
+                leaves++;
+            }
+
+            if(temp_node.left != null) {
+                queue.add(temp_node.left);
+            }
+
+            if(temp_node.right != null) {
+                queue.add(temp_node.right);
+            }
+        }
+
+        return leaves;
+    }
+
+    public int fullNode() {
+        return fullNode(root, 0);
+    }
+
+    private int fullNode(TreeNode<Item> node, int full_node) {
+        if(node == null) {
+            return 0;
+        }
+
+        int left_count = fullNode(node.left, full_node);
+        int right_count = fullNode(node.right, full_node);
+        if(node.right != null && node.left != null) {
+            System.out.println("node " + node.item + " " + left_count + " " + right_count);
+            full_node = left_count + right_count + 1;
+        } else {
+            full_node = left_count + right_count;
+        }
+
+        return full_node;
+    }
     
 }
