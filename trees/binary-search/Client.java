@@ -57,6 +57,8 @@ public class Client {
                 bst.deleteMax();
             } else if(x.compareTo("-") == 0){
                 bst.delete(scn.nextInt());
+            } else if(x.compareTo("L") == 0){
+                System.out.println(bst.leaves() + " leaves");
             }
             // else if(x.compareTo("") == 0){
                 

@@ -391,7 +391,6 @@ public class BST<Item extends Comparable<Item>> {
         if(node == null) {
             return null;
         }
-
         int cmp = node.item.compareTo(item);
 
         if(cmp < 0) {
@@ -412,6 +411,24 @@ public class BST<Item extends Comparable<Item>> {
             node.left = temp.left;
         }
         return node;
+    }
+
+    public int leaves() {
+        return leaves(root);
+    }
+
+    private int leaves(TreeNode<Item> node) {
+        if(node == null) {
+            return 0;
+        }
+        // System.out.println(node.item + " recursion stack");
+        if(node.left == null && node.right == null) {
+            return 1;
+        }
+        int left_leaves = leaves(node.left);
+        int right_leaves = leaves(node.right);
+        return left_leaves + right_leaves;
+
     }
     
 }
