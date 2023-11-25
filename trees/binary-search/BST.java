@@ -344,4 +344,39 @@ public class BST<Item extends Comparable<Item>> {
             return rank(item, node.left);
         }
     }
+
+    public void deleteMin() {
+        if(size == 0) {
+            System.out.println("Nothing to delete");
+            return;
+        }
+        root = deleteMin(root);
+    }
+
+    private TreeNode<Item> deleteMin(TreeNode<Item> node) {
+        if(node.left == null) {
+            size--;
+            return node.right;
+        }
+        node.left = deleteMin(node.left);
+        return node;
+    }
+    
+    public void deleteMax() {
+        if(size == 0) {
+            System.out.println("Nothing to delete");
+            return;
+        }
+        root = deleteMax(root);
+    }
+
+    private TreeNode<Item> deleteMax(TreeNode<Item> node) {
+        if(node.right == null) {
+            size--;
+            return node.left;
+        }
+        node.right = deleteMax(node.right);
+        return node;
+    }
+    
 }

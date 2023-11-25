@@ -51,10 +51,11 @@ public class Client {
                 System.out.println(bst.deepestNode() + " deepest node");
             } else if(x.compareTo("RA") == 0){
                 System.out.println(bst.rank(scn.nextInt()) + " rank");
+            } else if(x.compareTo("-MIN") == 0){
+                bst.deleteMin();
+            } else if(x.compareTo("-MAX") == 0){
+                bst.deleteMax();
             }
-            // else if(x.compareTo("") == 0){
-                
-            // }
             // else if(x.compareTo("") == 0){
                 
             // }
