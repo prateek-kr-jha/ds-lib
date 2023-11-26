@@ -65,7 +65,11 @@ public class Client {
                 System.out.println(bst.fullNode() + " full node");
             } else if(x.compareTo("HN") == 0){
                 System.out.println(bst.halfNode() + " half node");
-            }
+            } else if(x.compareTo("HNNR") == 0){
+                System.out.println(bst.halfNode() + " half node non recursive");
+            } else if(x.compareTo("FNNR") == 0){
+                System.out.println(bst.fullNodeNR() + " full node non recursive");
+            } 
             // else if(x.compareTo("") == 0){
                 
             // }

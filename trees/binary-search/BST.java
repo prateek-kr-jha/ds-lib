@@ -495,5 +495,52 @@ public class BST<Item extends Comparable<Item>> {
             return left_count + right_count;
         }
     }
+
+    public int halfNodeNR() {
+        Queue<TreeNode<Item>> queue = new LinkedList<TreeNode<Item>>();
+        int half_nodes = 0;
+        queue.add(root);
+
+        while(!queue.isEmpty()) {
+            TreeNode<Item> temp = queue.poll();
+
+            if((temp.right != null && temp.left == null) || (temp.right == null && temp.left != null)) {
+                half_nodes++;
+            }
+
+            if(temp.left != null) {
+                queue.add(temp.left);
+            }
+
+            if(temp.right != null) {
+                queue.add(temp.right);
+            }
+        }
+
+        return half_nodes;
+    }
+
+    public int fullNodeNR() {
+        Queue<TreeNode<Item>> queue = new LinkedList<TreeNode<Item>>();
+        int full_node = 0;
+        queue.add(root);
+
+        while(!queue.isEmpty()) {
+            TreeNode<Item> temp = queue.poll();
+            
+            if(temp.right != null && temp.left != null) {
+                full_node++;
+            }
+
+            if(temp.left != null) {
+                queue.add(temp.left);
+            }
+            if(temp.right != null) {
+                queue.add(temp.right);
+            }
+        }
+
+        return full_node;
+    }
     
 }
