@@ -63,6 +63,8 @@ public class Client {
                 System.out.println(bst.leavesNR() + " leaves");
             } else if(x.compareTo("FN") == 0){
                 System.out.println(bst.fullNode() + " full node");
+            } else if(x.compareTo("HN") == 0){
+                System.out.println(bst.halfNode() + " half node");
             }
             // else if(x.compareTo("") == 0){
                 

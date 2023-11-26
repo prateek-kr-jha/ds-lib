@@ -477,5 +477,23 @@ public class BST<Item extends Comparable<Item>> {
 
         return full_node;
     }
+
+    public int halfNode() {
+        return halfNode(root);
+    }
+
+    private int halfNode(TreeNode<Item> node) {
+        if(node == null) {
+            return 0;
+        }
+
+        int left_count = halfNode(node.left);
+        int right_count = halfNode(node.right);
+        if((node.left == null && node.right != null) || (node.right == null && node.left != null)) {
+            return left_count + right_count + 1;
+        } else {
+            return left_count + right_count;
+        }
+    }
     
 }
