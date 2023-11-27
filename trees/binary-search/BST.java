@@ -542,5 +542,9 @@ public class BST<Item extends Comparable<Item>> {
 
         return full_node;
     }
+
+    public static void main(String[] args) {
+        
+    }
     
 }
