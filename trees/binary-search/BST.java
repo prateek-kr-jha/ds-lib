@@ -543,8 +543,31 @@ public class BST<Item extends Comparable<Item>> {
         return full_node;
     }
 
+    public boolean compareStructure(TreeNode<Item> node1, TreeNode<Item> node2) {
+        if(node1 == null && node2 == null) {
+            return true;
+        }
+
+        if(node1 == null || node2 == null) {
+            return false;
+        }
+        boolean left_compare = compareStructure(node1.left, node2.left);
+        boolean right_compare = compareStructure(node1.right, node2.right);
+        return left_compare && right_compare;
+    }
+
     public static void main(String[] args) {
-        
+        BST<Integer> bst1 = new BST<Integer>();
+        BST<Integer> bst2 = new BST<Integer>();
+
+        for(int i = 100; i > 0; i-=20) {
+            bst1.add(i);
+            bst2.add(i);
+        }
+        bst1.add(200);
+        bst2.add(200);
+        System.out.println(bst1.compareStructure(bst1.root, bst2.root));;
+
     }
     
 }
