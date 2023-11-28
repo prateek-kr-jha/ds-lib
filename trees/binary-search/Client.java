@@ -71,6 +71,10 @@ public class Client {
                 System.out.println(bst.fullNodeNR() + " full node non recursive");
             } else if(x.compareTo("D") == 0){
                 System.out.println(bst.diameter() + " diameter");
+            } else if(x.compareTo("W") == 0){
+                System.out.println(bst.width() + " width");
+            } else if(x.compareTo("MS") == 0){
+                System.out.println(bst.maxSum() + " max sum");
             } 
             // else if(x.compareTo("") == 0){
                 

@@ -581,6 +581,62 @@ public class BST<Item extends Comparable<Item>> {
 
         return max(right_dia, left_dia, left_height + right_height + 3);
     }
+
+    public int width() {
+        int max = 0;
+        int height = height();
+
+        for(int i = 0; i <= height; i++) {
+            int tmp = width(root, i);
+
+            if(tmp > max) {
+                max = tmp;
+            }
+        }
+
+        return max;
+    }
+
+    private int width(TreeNode<Item> node, int k) {
+        if(node == null) {
+            return 0;
+        }
+
+        if(k == 0) {
+            return 1;
+        } else {
+            return width(node.left, k - 1) + width(node.right, k - 1);
+        }
+    }
+
+    public int maxSum() {
+        int max = Integer.MIN_VALUE;
+        int height = height();
+
+        for(int i = 0; i <= height; i++) {
+            int tmp = (Integer) maxSum(root, i);
+
+            if(max < tmp) {
+                max = tmp;
+            }
+        }
+
+        return max;
+    }
+
+    private Item maxSum(TreeNode<Item> node, int k) {
+        if(node == null) {
+            return  (Item) Integer.valueOf(0);
+        }
+
+        if(k == 0) {
+            return node.item;
+        } else {
+            Item left = maxSum(node.left, k - 1);
+            Item right = maxSum(node.right, k - 1);
+            return (Item) (Integer)((Integer) left + (Integer) right); 
+        }
+    }
     public static void main(String[] args) {
         BST<Integer> bst1 = new BST<Integer>();
         BST<Integer> bst2 = new BST<Integer>();
