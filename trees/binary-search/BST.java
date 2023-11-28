@@ -556,6 +556,31 @@ public class BST<Item extends Comparable<Item>> {
         return left_compare && right_compare;
     }
 
+    public int diameter() {
+        return diameter(root);
+    }
+
+    private int max(int a, int b, int c) {
+        if((a >= b && b >= c) || (a >= c && c >= b)) {
+            return a;
+        }
+        if((b >= a && a >= c) || (b >= c && c >= a)) {
+            return b;
+        }
+        return c;
+    }
+
+    private int diameter(TreeNode<Item> node) {
+        if(node == null) {
+            return 0;
+        }
+        int left_height = height(node.left);
+        int right_height = height(node.right);
+        int left_dia = diameter(node.left);
+        int right_dia = diameter(node.right);
+
+        return max(right_dia, left_dia, left_height + right_height + 3);
+    }
     public static void main(String[] args) {
         BST<Integer> bst1 = new BST<Integer>();
         BST<Integer> bst2 = new BST<Integer>();
