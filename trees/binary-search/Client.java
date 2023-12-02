@@ -75,7 +75,9 @@ public class Client {
                 System.out.println(bst.width() + " width");
             } else if(x.compareTo("MS") == 0){
                 System.out.println(bst.maxSum() + " max sum");
-            } 
+            } else if(x.compareTo("RL") == 0){
+                bst.rootToLeaf();
+            }
             // else if(x.compareTo("") == 0){
                 
             // }

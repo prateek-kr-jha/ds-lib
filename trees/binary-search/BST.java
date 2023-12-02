@@ -637,6 +637,34 @@ public class BST<Item extends Comparable<Item>> {
             return (Item) (Integer)((Integer) left + (Integer) right); 
         }
     }
+
+    public void rootToLeaf(){
+        Item[] path =(Item[]) new Comparable[256];
+        rootToLeaf(root, path, 0);
+    }
+
+    private void rootToLeaf(TreeNode<Item> node, Item[] path, int pathLen) {
+        if(node == null) {
+            return;
+        }
+
+        path[pathLen++] = node.item;
+        if(node.right == null && node.left == null) {
+            printPath(path, pathLen);
+        } else {
+            rootToLeaf(node.left, path, pathLen);
+            rootToLeaf(node.right, path, pathLen);
+        }
+    }
+
+    private void printPath(Item[] path, int pathLen) {
+        for(int i = 0; i < pathLen; i++) {
+            System.out.print(path[i] + " ");
+        }
+
+        System.out.println();
+    }
+    //---------------------------------------------------------------------------------------//
     public static void main(String[] args) {
         BST<Integer> bst1 = new BST<Integer>();
         BST<Integer> bst2 = new BST<Integer>();
