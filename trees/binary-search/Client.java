@@ -79,6 +79,10 @@ public class Client {
                 bst.rootToLeaf();
             } else if(x.compareTo("PS") == 0){
                 System.out.println(bst.hasPathSum(scn.nextInt()) + " path sum");
+            } else if(x.compareTo("SUM") == 0){
+                System.out.println(bst.sumOfAllNodes() + " sum of all nodes");
+            } else if(x.compareTo("MIRROR") == 0){
+                bst.mirror();
             } 
             // else if(x.compareTo("") == 0){
                 

@@ -688,6 +688,34 @@ public class BST<Item extends Comparable<Item>> {
             return hasPathSum(node.right, sum);
         }
     }
+
+    public int sumOfAllNodes() {
+        return sumOfAllNodes(root);
+    }
+
+    private int sumOfAllNodes(TreeNode<Item> node) {
+        if(node == null) {
+            return 0;
+        }
+
+        return (Integer) node.item + sumOfAllNodes(node.left) + sumOfAllNodes(node.right);
+    }
+    public void mirror() {
+        mirror(root);
+    }
+    private void mirror(TreeNode<Item> node) {
+        if(node == null) {
+            return;
+        }
+        // System.out.println(node.item + " node item");
+        // if(node.left != null) {}
+        mirror(node.left);
+        mirror(node.right);
+
+        TreeNode<Item> tmp = node.left;
+        node.left = node.right;
+        node.right = tmp;
+    }
     //---------------------------------------------------------------------------------------//
     public static void main(String[] args) {
         BST<Integer> bst1 = new BST<Integer>();
