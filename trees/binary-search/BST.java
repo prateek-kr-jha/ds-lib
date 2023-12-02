@@ -716,6 +716,23 @@ public class BST<Item extends Comparable<Item>> {
         node.left = node.right;
         node.right = tmp;
     }
+
+    public boolean isMirror(TreeNode<Item> node1, TreeNode<Item> node2) {
+        if(node1 == null && node2 == null) {
+            return true;
+        }
+        if(node1 == null || node2 == null) {
+            return false;
+        }
+        // System.out.println(node1.item + " " + node2.item + " nodes ");
+
+        if(node1.item.compareTo(node2.item) != 0) {
+            return false;
+        } 
+        boolean left = isMirror(node1.left, node2.right);
+        boolean right = isMirror(node1.right, node2.left);
+        return (left && right);
+    }
     //---------------------------------------------------------------------------------------//
     public static void main(String[] args) {
         BST<Integer> bst1 = new BST<Integer>();
@@ -725,9 +742,14 @@ public class BST<Item extends Comparable<Item>> {
             bst1.add(i);
             bst2.add(i);
         }
-        bst1.add(200);
+        // bst1.add(200);
         bst2.add(200);
-        System.out.println(bst1.compareStructure(bst1.root, bst2.root));;
+        bst1.inOrder();
+        System.out.println("in order");
+        bst2.inOrder();
+        System.out.println("in order");
+        bst1.mirror();
+        System.out.println(bst1.isMirror(bst1.root, bst2.root));;
 
     }
     
