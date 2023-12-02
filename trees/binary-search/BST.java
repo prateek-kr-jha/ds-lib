@@ -664,6 +664,30 @@ public class BST<Item extends Comparable<Item>> {
 
         System.out.println();
     }
+
+    public boolean hasPathSum(int sum) {
+        return hasPathSum(root, sum);
+    }
+
+    private boolean hasPathSum(TreeNode<Item> node, int sum) {
+        if(node == null) {
+            return false;
+        }
+        Integer num = (Integer) node.item;
+        if(num == sum) {
+            return true;
+        }
+        if(sum < num) {
+            return false;
+        }
+
+        sum -= num;
+        if(sum <= num) {
+            return hasPathSum(node.left, sum);
+        } else {
+            return hasPathSum(node.right, sum);
+        }
+    }
     //---------------------------------------------------------------------------------------//
     public static void main(String[] args) {
         BST<Integer> bst1 = new BST<Integer>();

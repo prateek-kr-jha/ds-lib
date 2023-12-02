@@ -77,7 +77,9 @@ public class Client {
                 System.out.println(bst.maxSum() + " max sum");
             } else if(x.compareTo("RL") == 0){
                 bst.rootToLeaf();
-            }
+            } else if(x.compareTo("PS") == 0){
+                System.out.println(bst.hasPathSum(scn.nextInt()) + " path sum");
+            } 
             // else if(x.compareTo("") == 0){
                 
             // }
