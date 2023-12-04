@@ -2,8 +2,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
-import org.w3c.dom.traversal.TreeWalker;
-
 public class BST<Item extends Comparable<Item>> {
     private TreeNode<Item> root;
     private int size;
@@ -274,21 +272,6 @@ public class BST<Item extends Comparable<Item>> {
         return found;
     }
 
-    // public void deleteTree() {
-    //     deleteTree(root);
-    // }
-
-    // private void deleteTree(TreeNode<Item> node) {
-    //     if(node == null) {
-    //         return;
-    //     }
-
-    //     deleteTree(node.left);
-    //     deleteTree(node.right);
-    //     node = null;
-    //     size--;
-    // }
-
     public void deleteTree() {
         root = null;
     }
@@ -311,21 +294,6 @@ public class BST<Item extends Comparable<Item>> {
 
         return tmp.item;
     }
-
-    private TreeNode<Item> searchNode(Item item, TreeNode<Item> node) {
-        if(node == null) {
-            return null;
-        }
-        int compare = node.item.compareTo(item);
-        if(compare == 0) {
-            return node;
-        } else if(compare == -1) {
-            return searchNode(item, node.right);
-        } else {
-            return searchNode(item, node.left);
-        }
-    }
-
 
     public int rank(Item item) {
         return rank(item, root);
@@ -375,7 +343,6 @@ public class BST<Item extends Comparable<Item>> {
 
     private TreeNode<Item> deleteMax(TreeNode<Item> node) {
         if(node.right == null) {
-            // size--;
             return node.left;
         }
         node.right = deleteMax(node.right);
@@ -421,7 +388,6 @@ public class BST<Item extends Comparable<Item>> {
         if(node == null) {
             return 0;
         }
-        // System.out.println(node.item + " recursion stack");
         if(node.left == null && node.right == null) {
             return 1;
         }
@@ -469,7 +435,6 @@ public class BST<Item extends Comparable<Item>> {
         int left_count = fullNode(node.left, full_node);
         int right_count = fullNode(node.right, full_node);
         if(node.right != null && node.left != null) {
-            System.out.println("node " + node.item + " " + left_count + " " + right_count);
             full_node = left_count + right_count + 1;
         } else {
             full_node = left_count + right_count;
@@ -707,8 +672,6 @@ public class BST<Item extends Comparable<Item>> {
         if(node == null) {
             return;
         }
-        // System.out.println(node.item + " node item");
-        // if(node.left != null) {}
         mirror(node.left);
         mirror(node.right);
 
@@ -724,7 +687,6 @@ public class BST<Item extends Comparable<Item>> {
         if(node1 == null || node2 == null) {
             return false;
         }
-        // System.out.println(node1.item + " " + node2.item + " nodes ");
 
         if(node1.item.compareTo(node2.item) != 0) {
             return false;

@@ -7,7 +7,6 @@ public class Client {
         while(scn.hasNext()) {
             String x = scn.next();
             if(x.compareTo("+") == 0) {
-                // System.out.println();
                 bst.add(scn.nextInt());
             } else if(x.compareTo("+RC") == 0){
                 bst.addRecursive(scn.nextInt());
