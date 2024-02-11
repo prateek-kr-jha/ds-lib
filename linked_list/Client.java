@@ -82,6 +82,42 @@ public class Client {
         return tail;
 
     }
+
+    public static Node reverseList(Node head) {
+        Node current = head;
+        Node prev = null;
+        Node next = null;
+
+        while(current != null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        head = prev;
+        return head;
+    }
+
+    public static boolean palindrome(Node head) {
+        Node center = head;
+        Node tail = head;
+        while (tail.next != null && tail.next.next != null) {
+            tail = tail.next.next;
+            center = center.next;
+        }
+
+        Node reversedHalf = reverseList(center.next);
+        center.next = null;
+        Node firstHalf = head;
+        while(firstHalf != null && reversedHalf != null) {
+            if(firstHalf.data != reversedHalf.data) {
+                return false;
+            }
+            firstHalf = firstHalf.next;
+            reversedHalf = reversedHalf.next;
+        }
+        return true;
+    }
     public static void main(String[] args) {
         // int val = Integer.parseInt(args[0]);
         List l1 = new List();
@@ -91,18 +127,18 @@ public class Client {
 
         // printList(l1.head);
         l1.printAll();
-        l1.tail.next = l1.head;
+        // l1.tail.next = l1.head;
         // while()
-        Node partionedList = findCenterNode(l1.head);
         // Node partionedList = oddEven(l1.head);
-
+        // Node partionedList = palindrome(l1.head);
         // Node iterator = partionedList;
+
         // while(iterator != null) {
         //     System.out.print(iterator.data + " ");
         //     iterator = iterator.next;
         // }
 
-        System.out.println(partionedList.data);
+        System.out.println(palindrome(l1.head));
 
 
     }
