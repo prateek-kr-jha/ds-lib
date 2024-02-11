@@ -118,6 +118,28 @@ public class Client {
         }
         return true;
     }
+
+    public static Node exchangeAdjacent(Node head) {
+        if(head == null) {
+            System.out.println("empty list");
+            return null;
+        }
+        Node curr = head;
+
+        while(curr != null && curr.next != null) {
+            int temp = curr.data;
+            curr.data = curr.next.data;
+            curr.next.data = temp;
+            curr = curr.next.next;
+        }
+
+        return head;
+    }
+
+    // TODO reverse k nodes recursive and swap adjacent book method
+    public static Node reverseKNode(Node head) {
+        
+    }
     public static void main(String[] args) {
         // int val = Integer.parseInt(args[0]);
         List l1 = new List();
@@ -129,16 +151,16 @@ public class Client {
         l1.printAll();
         // l1.tail.next = l1.head;
         // while()
-        // Node partionedList = oddEven(l1.head);
+        Node partionedList = exchangeAdjacent(l1.head);
         // Node partionedList = palindrome(l1.head);
-        // Node iterator = partionedList;
+        Node iterator = partionedList;
 
-        // while(iterator != null) {
-        //     System.out.print(iterator.data + " ");
-        //     iterator = iterator.next;
-        // }
-
-        System.out.println(palindrome(l1.head));
+        while(iterator != null) {
+            System.out.print(iterator.data + " ");
+            iterator = iterator.next;
+        }
+        System.out.println();
+        // System.out.println(palindrome(l1.head));
 
 
     }
