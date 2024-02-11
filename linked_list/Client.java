@@ -46,24 +46,63 @@ public class Client {
 
         return evenHead.next;
     }
+
+    public static void printList(Node head) {
+        Node iterator = head;
+        while(iterator != null && iterator.next != head && iterator.next.next != head) {
+            System.out.print(iterator.data + " ");
+            iterator = iterator.next;
+        }
+        if(iterator.next != head) {
+            System.out.print(iterator.next.data);
+        }
+        System.out.println();
+    }
+    public static Node findCenterNode(Node headNode) {
+        if(headNode == null) {
+            return headNode;
+        }
+        Node tail = headNode;
+        Node center = headNode;
+        while(tail.next != headNode && tail.next.next != headNode) {
+            tail = tail.next.next;
+            center = center.next;
+        }
+        if(tail.next != headNode) {
+            tail = tail.next;
+        }
+
+        System.out.println(tail.data +" + " + center.data);
+        tail.next = center.next;
+        Node cl2 = center.next;
+        Node cl1 = headNode;
+        center.next = headNode;
+        printList(cl1);
+        printList(cl2);
+        return tail;
+
+    }
     public static void main(String[] args) {
         // int val = Integer.parseInt(args[0]);
         List l1 = new List();
         while(scn.hasNext()) {
             l1.add(scn.nextInt());
         }
+
+        // printList(l1.head);
         l1.printAll();
+        l1.tail.next = l1.head;
         // while()
-        // Node partionedList = partition(l1.head, val);
-        Node partionedList = oddEven(l1.head);
+        Node partionedList = findCenterNode(l1.head);
+        // Node partionedList = oddEven(l1.head);
 
-        Node iterator = partionedList;
-        while(iterator != null) {
-            System.out.print(iterator.data + " ");
-            iterator = iterator.next;
-        }
+        // Node iterator = partionedList;
+        // while(iterator != null) {
+        //     System.out.print(iterator.data + " ");
+        //     iterator = iterator.next;
+        // }
 
-        System.out.println();
+        System.out.println(partionedList.data);
 
 
     }
