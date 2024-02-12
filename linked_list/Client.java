@@ -97,7 +97,7 @@ public class Client {
         head = prev;
         return head;
     }
-
+    //TODO recursive palindrome
     public static boolean palindrome(Node head) {
         Node center = head;
         Node tail = head;
@@ -170,27 +170,59 @@ public class Client {
 
         return prev;
     }
+
+    public static int josephusPosition(int numberOfPeople, int eleminationPosition) {
+        //create circular list
+        Node head = new Node(1); 
+        Node itterator = head;
+
+        for(int i = 2; i <= numberOfPeople; i++) {
+            itterator.next = new Node(i);
+            itterator = itterator.next;
+        }
+
+        itterator.next = head;
+        // int eleminated = 0;
+        itterator = head;
+        Node current = null;
+        while(itterator.next != itterator) {
+            for(int i = 0; i < eleminationPosition -1; i++) {
+                current = itterator;
+                itterator = itterator.next;
+                // itterator = itterator.next;
+            }
+            current.next = itterator.next;
+            itterator = current.next;
+        }
+
+        // printList(head);
+        return itterator.data;
+
+    }
     public static void main(String[] args) {
         int val = Integer.parseInt(args[0]);
-        List l1 = new List();
-        while(scn.hasNext()) {
-            l1.add(scn.nextInt());
-        }
+        int val1 = Integer.parseInt(args[1]);
+        System.out.println(josephusPosition(val, val1));
+        
+        // List l1 = new List();
+        // while(scn.hasNext()) {
+        //     l1.add(scn.nextInt());
+        // }
 
-        // printList(l1.head);
-        l1.printAll();
-        // l1.tail.next = l1.head;
-        // while()
-        Node partionedList = reverseKNode(l1.head, val);
-        // Node partionedList = palindrome(l1.head);
-        Node iterator = partionedList;
+        // // printList(l1.head);
+        // l1.printAll();
+        // // l1.tail.next = l1.head;
+        // // while()
+        // Node partionedList = reverseKNode(l1.head, val);
+        // // Node partionedList = palindrome(l1.head);
+        // Node iterator = partionedList;
 
-        while(iterator != null) {
-            System.out.print(iterator.data + " ");
-            iterator = iterator.next;
-        }
-        System.out.println();
-        // System.out.println(palindrome(l1.head));
+        // while(iterator != null) {
+        //     System.out.print(iterator.data + " ");
+        //     iterator = iterator.next;
+        // }
+        // System.out.println();
+        // // System.out.println(palindrome(l1.head));
 
 
     }
