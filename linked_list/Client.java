@@ -137,11 +137,41 @@ public class Client {
     }
 
     // TODO reverse k nodes recursive and swap adjacent book method
-    public static Node reverseKNode(Node head) {
-        
+    public static Node reverseKNode(Node head, int k) {
+        if(head == null || k == 1) {
+            return head;
+        }
+
+        Node current = head;
+        Node prev = null;
+        Node next = null;
+        int count = k;
+        int length = 0;
+        while(current != null && length != k) {
+            length++;
+            current = current.next;
+        }
+
+        if(length != k) {
+            return head;
+        }
+        current = head;
+        while(current != null && count > 0) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+            count--;
+        }
+
+        if(next != null) {
+            head.next = reverseKNode(next, k);
+        }
+
+        return prev;
     }
     public static void main(String[] args) {
-        // int val = Integer.parseInt(args[0]);
+        int val = Integer.parseInt(args[0]);
         List l1 = new List();
         while(scn.hasNext()) {
             l1.add(scn.nextInt());
@@ -151,7 +181,7 @@ public class Client {
         l1.printAll();
         // l1.tail.next = l1.head;
         // while()
-        Node partionedList = exchangeAdjacent(l1.head);
+        Node partionedList = reverseKNode(l1.head, val);
         // Node partionedList = palindrome(l1.head);
         Node iterator = partionedList;
 
