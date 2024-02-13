@@ -217,6 +217,39 @@ public class Client {
 
         return modularNode;
     }
+
+    public static Node modularNodeFromEnd(Node head, int k) {
+        if(k <= 0 || head == null) {
+            return null;
+        }
+
+        Node modularNode = new Node(-1);
+        Node lead = head;
+        Node lag = head;
+        int count = 0;
+
+        for(int i = 0; i < k; i++) {
+            if(lead == null) {
+                return null;
+            }
+            lead = lead.next;
+        }
+
+        while(lead != null) {
+            lead = lead.next;
+            lag = lag.next;
+            count++;
+        }
+
+        if(count >= k) {
+            modularNode = head;
+            for(int i = 0; i < count - k; i++) {
+                modularNode = modularNode.next;
+            }
+        }
+
+        return modularNode;
+    }
     public static void main(String[] args) {
         int val = Integer.parseInt(args[0]);
         // int val1 = Integer.parseInt(args[1]);
@@ -231,7 +264,7 @@ public class Client {
         // l1.printAll();
         // // l1.tail.next = l1.head;
         // // while()
-        Node partionedList = modularNode(l1.head, val);
+        Node partionedList = modularNodeFromEnd(l1.head, val);
         // // Node partionedList = palindrome(l1.head);
         // Node iterator = partionedList;
 
