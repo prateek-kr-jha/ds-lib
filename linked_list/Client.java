@@ -250,7 +250,46 @@ public class Client {
 
         return modularNode;
     }
-    public static void main(String[] args) {
+
+    //TODO fractional node 
+    // public static Node fractionalNode(Node head, int k) {
+
+    // }
+
+    //TODO merge two sorted list
+    // public static Node mergeList(Node l1, Node l2) {
+
+    // }
+
+    //TODO rotate list by k
+    public static Node rotateList(Node head, int k) {
+        if(head == null || k <= 0) {
+            return head;
+        }
+
+        Node tail = head;
+        Node newTail = head;
+        int length = 1;
+        while(tail.next != null) {
+            length++;
+            tail = tail.next;
+        }
+
+        k = k % length;
+        if(k == 0) {
+            return head;
+        }
+    
+        for(int i = 1; i < length - k; i++) {
+            newTail = newTail.next;
+        }
+        tail.next = head;
+        head = newTail.next;
+        newTail.next = null;
+    
+        return head;
+    }
+    public static void main(String[] args) { 
         int val = Integer.parseInt(args[0]);
         // int val1 = Integer.parseInt(args[1]);
         // System.out.println(josephusPosition(val, val1));
@@ -264,15 +303,16 @@ public class Client {
         // l1.printAll();
         // // l1.tail.next = l1.head;
         // // while()
-        Node partionedList = modularNodeFromEnd(l1.head, val);
+        Node partionedList = rotateList(l1.head, val);
         // // Node partionedList = palindrome(l1.head);
-        // Node iterator = partionedList;
+        Node iterator = partionedList;
 
-        // while(iterator != null) {
-        //     System.out.print(iterator.data + " ");
-        //     iterator = iterator.next;
-        // }
-        System.out.println(partionedList.data);
+        while(iterator != null) {
+            System.out.print(iterator.data + " ");
+            iterator = iterator.next;
+        }
+        System.out.println();
+        // System.out.println(partionedList.data);
         // // System.out.println(palindrome(l1.head));
 
 
