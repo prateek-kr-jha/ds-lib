@@ -197,23 +197,41 @@ public class Client {
 
         // printList(head);
         return itterator.data;
+    }
 
+    public static Node modularNode(Node head, int k) {
+        if(k <= 0) {
+            return null;
+        }
+
+        Node modularNode = new Node(-1);
+        Node itterator = head;
+        int i = 1;
+        while(itterator != null) {
+            if(i % k == 0) {
+                modularNode = itterator;
+            }
+            itterator = itterator.next;
+            i++;
+        }
+
+        return modularNode;
     }
     public static void main(String[] args) {
         int val = Integer.parseInt(args[0]);
-        int val1 = Integer.parseInt(args[1]);
-        System.out.println(josephusPosition(val, val1));
+        // int val1 = Integer.parseInt(args[1]);
+        // System.out.println(josephusPosition(val, val1));
         
-        // List l1 = new List();
-        // while(scn.hasNext()) {
-        //     l1.add(scn.nextInt());
-        // }
+        List l1 = new List();
+        while(scn.hasNext()) {
+            l1.add(scn.nextInt());
+        }
 
         // // printList(l1.head);
         // l1.printAll();
         // // l1.tail.next = l1.head;
         // // while()
-        // Node partionedList = reverseKNode(l1.head, val);
+        Node partionedList = modularNode(l1.head, val);
         // // Node partionedList = palindrome(l1.head);
         // Node iterator = partionedList;
 
@@ -221,7 +239,7 @@ public class Client {
         //     System.out.print(iterator.data + " ");
         //     iterator = iterator.next;
         // }
-        // System.out.println();
+        System.out.println(partionedList.data);
         // // System.out.println(palindrome(l1.head));
 
 
