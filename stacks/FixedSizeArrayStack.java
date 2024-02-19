@@ -43,7 +43,11 @@ public class FixedSizeArrayStack {
     }
 
     public int top() {
-        
+        if(isEmpty()) {
+            throw new IllegalAccessError("empty stack");
+        }
+
+        return stack[size - 1];
     }
 
 }
